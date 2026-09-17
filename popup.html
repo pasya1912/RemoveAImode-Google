@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hide Google AI Mode</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      width: 320px;
+      background: #f8f9fa;
+      color: #202124;
+      padding: 16px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #dadce0;
+    }
+
+    .icon-box {
+      width: 32px;
+      height: 32px;
+      background: #1a73e8;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1f1f1f;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: #5f6368;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #e0e2e6;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .option-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+    }
+
+    .option-row:not(:last-child) {
+      border-bottom: 1px solid #f1f3f4;
+    }
+
+    .label-group {
+      display: flex;
+      flex-direction: column;
+      max-width: 210px;
+    }
+
+    .label-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #3c4043;
+    }
+
+    .label-desc {
+      font-size: 11px;
+      color: #70757a;
+      margin-top: 2px;
+    }
+
+    /* Switch toggle */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.25s;
+      border-radius: 22px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.25s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #1a73e8;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #1a73e8;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+
+    .info-badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #e8f0fe;
+      border-radius: 8px;
+      padding: 10px;
+      color: #1967d2;
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+
+    .info-badge svg {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .footer {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 11px;
+      color: #9aa0a6;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="icon-box">G</div>
+    <div>
+      <div class="title">Hide Google AI Mode</div>
+      <div class="subtitle">Search Clean UI</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="option-row">
+      <div class="label-group">
+        <span class="label-title">Hide "AI mode" button</span>
+        <span class="label-desc">Prevents accidental clicks into AI search mode</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggleAIMode" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="option-row">
+      <div class="label-group">
+        <span class="label-title">Hide "Ask anything" box</span>
+        <span class="label-desc">Removes the bottom prompt container</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggleAskAnything" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="info-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+    </svg>
+    <span><strong>AI Overview Protected:</strong> The AI Overview summary answers remain visible. Only the mode button and input prompt are hidden.</span>
+  </div>
+
+  <div class="footer">
+    Works on all Google search domains
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+/* Hide Google AI Mode & Ask Anything Container */
+
+[data-hide-ai-mode="true"],
+[data-hide-ask-box="true"] {
+  display: none !important;
+}
+
+/* Prevent layout flicker when possible */
+div:has(> textarea[placeholder*="Ask anything" i]),
+div:has(> input[placeholder*="Ask anything" i]) {
+  visibility: hidden;
+}
