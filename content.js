@@ -7,22 +7,31 @@
     hideAskAnything: true
   };
 
-  // Load preferences from storage
-  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
-    chrome.storage.sync.get(['hideAIMode', 'hideAskAnything'], (items) => {
-      if (items.hideAIMode !== undefined) config.hideAIMode = items.hideAIMode;
-      if (items.hideAskAnything !== undefined) config.hideAskAnything = items.hideAskAnything;
-      cleanup();
-    });
+  // Cross-browser storage API support
+  const storageAPI = (typeof chrome !== 'undefined' && chrome.storage)
+    ? chrome.storage
+    : (typeof browser !== 'undefined' && browser.storage ? browser.storage : null);
 
-    // Listen for real-time toggle changes from the popup
-    chrome.storage.onChanged.addListener((changes, area) => {
-      if (area === 'sync') {
-        if (changes.hideAIMode) config.hideAIMode = changes.hideAIMode.newValue;
-        if (changes.hideAskAnything) config.hideAskAnything = changes.hideAskAnything.newValue;
+  // Load preferences from storage
+  if (storageAPI && storageAPI.sync) {
+    storageAPI.sync.get(['hideAIMode', 'hideAskAnything'], (items) => {
+      if (items) {
+        if (items.hideAIMode !== undefined) config.hideAIMode = items.hideAIMode;
+        if (items.hideAskAnything !== undefined) config.hideAskAnything = items.hideAskAnything;
         cleanup();
       }
     });
+
+    // Listen for real-time toggle changes from the popup
+    if (storageAPI.onChanged) {
+      storageAPI.onChanged.addListener((changes, area) => {
+        if (area === 'sync') {
+          if (changes.hideAIMode) config.hideAIMode = changes.hideAIMode.newValue;
+          if (changes.hideAskAnything) config.hideAskAnything = changes.hideAskAnything.newValue;
+          cleanup();
+        }
+      });
+    }
   }
 
   function cleanupAIMode() {

@@ -16,6 +16,7 @@
       background: #f8f9fa;
       color: #202124;
       padding: 16px;
+      overflow-x: hidden;
     }
 
     .header {
@@ -49,6 +50,34 @@
     .subtitle {
       font-size: 11px;
       color: #5f6368;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #5f6368;
+      margin-bottom: 6px;
+      padding-left: 2px;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #e8eaed;
+    }
+
+    .site-chip {
+      background: #f1f3f4;
+      color: #3c4043;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 12px;
     }
 
     .card {
@@ -173,6 +202,7 @@
     </div>
   </div>
 
+  <div class="section-title">Google Search Cleaner</div>
   <div class="card">
     <div class="option-row">
       <div class="label-group">
@@ -197,15 +227,40 @@
     </div>
   </div>
 
+  <div class="section-title">AI Website Blocker</div>
+  <div class="card">
+    <div class="option-row">
+      <div class="label-group">
+        <span class="label-title">Block AI chat websites</span>
+        <span class="label-desc">Halts and blocks direct access to AI platforms</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggleBlockAISites" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="tags-container">
+      <span class="site-chip">ChatGPT</span>
+      <span class="site-chip">DeepSeek</span>
+      <span class="site-chip">Gemini</span>
+      <span class="site-chip">Claude</span>
+      <span class="site-chip">Copilot</span>
+      <span class="site-chip">Perplexity</span>
+      <span class="site-chip">Grok</span>
+      <span class="site-chip">Poe</span>
+      <span class="site-chip">Mistral</span>
+    </div>
+  </div>
+
   <div class="info-badge">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
     </svg>
-    <span><strong>AI Overview Protected:</strong> The AI Overview summary answers remain visible. Only the mode button and input prompt are hidden.</span>
+    <span><strong>AI Overview Protected:</strong> The Google AI Overview summary answers remain visible. Only the mode button, input prompt, and external AI chat sites are blocked.</span>
   </div>
 
   <div class="footer">
-    Works on all Google search domains
+    Google Search Clean + AI Site Blocker
   </div>
 
   <script src="popup.js"></script>
